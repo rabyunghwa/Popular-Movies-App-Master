@@ -39,7 +39,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -88,9 +87,6 @@ public class MovieDetailFragment extends Fragment implements LoaderManager.Loade
     private TextView plotSynopsis;
     private TextView voteAverage;
 
-    //private boolean fromFavorite;
-    //private TextView reviewContentPreview;
-    //private TextView trailerContentPreview;
     private ProgressBar progressBar;
 
     // declare long value to store clicked movie item id
@@ -99,19 +95,12 @@ public class MovieDetailFragment extends Fragment implements LoaderManager.Loade
     private boolean liked;
 
     private ArrayList<String> trailerKeyList;
-    private ArrayList<String> trailerNameList;
-
-    private static PopupWindow popupWindowReviews;
-    private static PopupWindow popupWindowTrailers;
 
     private static ViewGroup trailerSection;
     private static ViewGroup reviewSection;
     private ViewGroup reviewViewGroup;
     private ViewGroup trailerViewGroup;
     private HorizontalScrollView trailerScrollerView;
-
-    private ViewGroup trailersView;
-    private ViewGroup reviewsView;
 
     private String type;
 
@@ -129,10 +118,6 @@ public class MovieDetailFragment extends Fragment implements LoaderManager.Loade
     private CollapsingToolbarLayout collapsingToolbar;
 
     private boolean mIsDualPane;
-
-    // for phones, the corresponding activity associated with this fragment is DetailActivity
-    // for tablets, it's MainActivity
-    //private AppCompatActivity mActivityInstance;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -586,7 +571,6 @@ public class MovieDetailFragment extends Fragment implements LoaderManager.Loade
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (item.getItemId() == android.R.id.home) {
-            //restablishActionBar();
             LogUtil.log_i(TAG, "Home Button Clicked!");
             if (android.os.Build.VERSION.SDK_INT >= 21) {
                 getActivity().finishAfterTransition();
@@ -771,7 +755,7 @@ public class MovieDetailFragment extends Fragment implements LoaderManager.Loade
                 } else {
 
                     for (Review review : reviewArrayList) {
-                        ViewGroup reviewContainer = (ViewGroup) inflater.inflate(R.layout.review, reviewsView, false);
+                        ViewGroup reviewContainer = (ViewGroup) inflater.inflate(R.layout.review, null, false);
                         TextView reviewAuthor = (TextView) reviewContainer.findViewById(R.id.review_author);
                         final TextView reviewContent = (TextView) reviewContainer.findViewById(R.id.review_content);
                         reviewAuthor.setText(review.getReviewAuthor());
@@ -812,7 +796,6 @@ public class MovieDetailFragment extends Fragment implements LoaderManager.Loade
                 }
             }
 
-            trailerNameList = nameList;
             return stringList;
         }
 
@@ -840,7 +823,7 @@ public class MovieDetailFragment extends Fragment implements LoaderManager.Loade
                 } else {
                     trailerScrollerView.setVisibility(View.VISIBLE);
                     for (final String trailer : trailerList) {
-                        final ViewGroup thumbContainer = (ViewGroup) inflater.inflate(R.layout.video, trailersView,
+                        final ViewGroup thumbContainer = (ViewGroup) inflater.inflate(R.layout.video, null,
                                 false);
                         final ImageView thumbView = (ImageView) thumbContainer.findViewById(R.id.video_thumb);
                         final String urlString = "http://www.youtube.com/watch?v=" + trailer;

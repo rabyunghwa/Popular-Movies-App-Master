@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -89,6 +90,12 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
     private String BUNDLE_RECYCLER_LAYOUT_TOP_RATED = "com.awesome.byunghwa.app.popularmoviesapp2.fragment.BUNDLE_RECYCLER_LAYOUT_TOP_RATED";
     private String BUNDLE_RECYCLER_LAYOUT_FAVORITES = "com.awesome.byunghwa.app.popularmoviesapp2.fragment.BUNDLE_RECYCLER_LAYOUT_FAVORITES";
 
+    // define a boolean variable to keep track of screen rotation so that when the device
+    // rotates, data is not re-fetched
+    private boolean isDeviceRotated;
+
+    private Bundle savedInstanceState;
+
     /**
      * Disable predictive animations. There is a bug in RecyclerView which causes views that
      * are being reloaded to pull invalid ViewHolders from the internal recycler stack if the
@@ -137,7 +144,13 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
         initRecyclerView(layoutView);
         initSwipeRefreshLayout(layoutView);
         initEmptyView(layoutView);
+
+        isDeviceRotated = (savedInstanceState!=null);
+
+        this.savedInstanceState = savedInstanceState;
+
         initSpinner(layoutView);
+
         initProgressBar(layoutView);
 
         // we use appbarlayout as the view to decide if we are inflating the phone or tablet layout
@@ -157,7 +170,12 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
         return layoutView;
     }
 
-
+    // save spinner position
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable("list_position", recyclerView.getLayoutManager().onSaveInstanceState());
+    }
 
     private void initProgressBar(View layoutView) {
         progressBar = (ProgressBar) layoutView.findViewById(R.id.progressBar);
@@ -200,13 +218,15 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
                 switch (position) {
                     case 0:
                         // most popular movies
-                        mSwipeRefreshLayout.setRefreshing(true);
-                        Intent intent_popular = new Intent(getActivity(), PopularMoviesUpdaterService.class);
-                        if (!popularListInitialized) {
-                            intent_popular.putExtra("new", true);
-                            intent_popular.putExtra("page", 1);
+                        if (!isDeviceRotated) {
+                            mSwipeRefreshLayout.setRefreshing(true);
+                            Intent intent_popular = new Intent(getActivity(), PopularMoviesUpdaterService.class);
+                            if (!popularListInitialized) {
+                                intent_popular.putExtra("new", true);
+                                intent_popular.putExtra("page", 1);
+                            }
+                            getActivity().startService(intent_popular);
                         }
-                        getActivity().startService(intent_popular);
 
                         // !!!!!! remember to check if this loader already exists before initializing it
                         // if it already exists, then simply restart it
@@ -218,16 +238,21 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
 
                         popularListInitialized = true;
                         justTappedOnSpinnerPopItem = true;
+
+                        isDeviceRotated = false;
+
                         break;
                     case 1:
                         // top rated movies
-                        mSwipeRefreshLayout.setRefreshing(true);
-                        Intent intent_top_rated = new Intent(getActivity(), TopRatedMoviesUpdaterService.class);
-                        if (!topRatedListInitialized) {
-                            intent_top_rated.putExtra("new", true);
-                            intent_top_rated.putExtra("page", 1);
+                        if (!isDeviceRotated) {
+                            mSwipeRefreshLayout.setRefreshing(true);
+                            Intent intent_top_rated = new Intent(getActivity(), TopRatedMoviesUpdaterService.class);
+                            if (!topRatedListInitialized) {
+                                intent_top_rated.putExtra("new", true);
+                                intent_top_rated.putExtra("page", 1);
+                            }
+                            getActivity().startService(intent_top_rated);
                         }
-                        getActivity().startService(intent_top_rated);
 
                         // loader initialization should be done in onResume() instead of in onCreate()
                         // so that onLoadFinished() would not get called twice
@@ -239,6 +264,9 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
 
                         topRatedListInitialized = true;
                         justTappedOnSpinnerTopRatedItem = true;
+
+                        isDeviceRotated = false;
+
                         break;
                     case 2:
                         // my favorites
@@ -254,7 +282,14 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
                         } else {
                             getLoaderManager().restartLoader(MY_LOADER_ID_FAVORITES, null, MovieListFragment.this);
                         }
+
+                        isDeviceRotated = false;
+
+                        savedInstanceState = null;
+
                         break;
+
+
                 }
             }
 
@@ -361,6 +396,7 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
 
         int columnCount = 2;
         sglm = new CustomStaggeredGridLayoutManager(columnCount, StaggeredGridLayoutManager.VERTICAL);
+
         recyclerView.setLayoutManager(sglm);
     }
 
@@ -563,6 +599,13 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
                         emptyView.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
 
+                        if (savedInstanceState != null) {
+                            sglm.onRestoreInstanceState(savedInstanceState.getParcelable("list_position"));
+                            Log.i("MoviesListFrag", "restoring recyclerview position on rotation...");
+                        }
+
+                        savedInstanceState = null;
+
                         LogUtil.log_i(TAG, "Bundle Recycler Layout: " + getArguments().getParcelable(BUNDLE_RECYCLER_LAYOUT_POPULAR));
                         if (getArguments().getParcelable(BUNDLE_RECYCLER_LAYOUT_POPULAR) != null) {
                             LogUtil.log_i(TAG, "restoring recycler view position...");
@@ -617,6 +660,13 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
                         emptyView.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
 
+                        if (savedInstanceState != null) {
+                            sglm.onRestoreInstanceState(savedInstanceState.getParcelable("list_position"));
+                            Log.i("MoviesListFrag", "restoring recyclerview position on rotation...");
+                        }
+
+                        savedInstanceState = null;
+
                         LogUtil.log_i(TAG, "Bundle Recycler Layout: " + getArguments().getParcelable(BUNDLE_RECYCLER_LAYOUT_TOP_RATED));
                         if (getArguments().getParcelable(BUNDLE_RECYCLER_LAYOUT_TOP_RATED) != null) {
                             sglm.onRestoreInstanceState(getArguments().getParcelable(BUNDLE_RECYCLER_LAYOUT_TOP_RATED));
@@ -657,6 +707,13 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
                     if (cursor.moveToFirst()) {
                         emptyView.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
+
+                        if (savedInstanceState != null) {
+                            sglm.onRestoreInstanceState(savedInstanceState.getParcelable("list_position"));
+                            Log.i("MoviesListFrag", "restoring recyclerview position on rotation...");
+                        }
+
+                        savedInstanceState = null;
 
                         LogUtil.log_i(TAG, "Bundle Recycler Layout: " + getArguments().getParcelable(BUNDLE_RECYCLER_LAYOUT_FAVORITES));
                         if (getArguments().getParcelable(BUNDLE_RECYCLER_LAYOUT_FAVORITES) != null) {
