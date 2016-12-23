@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.Classic" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimaryClassic</item> 
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkClassic</item> 
+        <item name="colorControlHighlight">@color/colorAccentTranslucentClassic</item> 
+        <item name="colorAccent">@color/colorAccentClassic</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#FFFFFF</item>
+
+        <item name="actionOverflowMenuStyle">@style/PopupMenuListView</item>
+
+        <!-- for the arc motion -->
+        <!--<item name="android:windowSharedElementEnterTransition">-->
+            <!--@transition/sharing_shared_element_enter-->
+        <!--</item>-->
+
+        <!--<item name="android:listViewStyle">@style/ListViewStyle.Light</item>-->
+
+        <item name="android:navigationBarColor">@color/colorPrimaryDarkClassic</item>
+
+        <!--<item name="android:windowSharedElementEnterTransition">@android:transition/move</item>-->
+        <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
+
+        <!-- this is really important! setting it false will greatly harm the user experience -->
+        <item name="android:windowSharedElementsUseOverlay">true</item>
+
+        <item name="android:windowExitTransition">@transition/main_exit</item>
+        <item name="android:windowReenterTransition">@transition/main_reenter</item>
+    </style>
+
+    <style name="AppTheme.Classic.Detail" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimaryClassic</item> 
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkClassic</item> 
+        <item name="colorControlHighlight">@color/colorAccentTranslucentClassic</item> 
+        <item name="colorAccent">@color/colorAccentClassic</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#FFFFFF</item>
+
+        <item name="actionOverflowMenuStyle">@style/PopupMenuListView</item>
+
+        <!-- for the arc motion -->
+        <!--<item name="android:windowSharedElementEnterTransition">-->
+            <!--@transition/sharing_shared_element_enter-->
+        <!--</item>-->
+
+        <!--<item name="android:listViewStyle">@style/ListViewStyle.Light</item>-->
+
+        <item name="android:navigationBarColor">@color/colorPrimaryDarkClassic</item>
+
+        <!--<item name="android:windowSharedElementEnterTransition">@android:transition/move</item>-->
+        <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
+
+        <!-- this is really important! setting it false will greatly harm the user experience -->
+        <item name="android:windowSharedElementsUseOverlay">true</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">false</item>
+        <item name="android:windowEnterTransition">@transition/detail_enter</item>
+    </style>
+
+    <style name="AppThemeRomantics" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimaryRomantic</item> 
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkRomantic</item> 
+        <item name="colorControlHighlight">@color/colorAccentTranslucentRomantic</item> 
+        <item name="colorAccent">@color/colorAccentRomantic</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#FFFFFF</item>
+
+
+        <!--<item name="android:windowSharedElementEnterTransition">-->
+            <!--@transition/sharing_shared_element_enter-->
+        <!--</item>-->
+
+        <!--<item name="android:listViewStyle">@style/ListViewStyle.Light</item>-->
+
+        <item name="actionOverflowMenuStyle">@style/PopupMenuListView</item>
+
+        <item name="android:navigationBarColor">@color/colorPrimaryDarkRomantic</item>
+
+        <!--<item name="android:windowSharedElementEnterTransition">@android:transition/move</item>-->
+        <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
+        <item name="android:windowSharedElementsUseOverlay">true</item>
+
+        <item name="android:windowExitTransition">@transition/main_exit</item>
+        <item name="android:windowReenterTransition">@transition/main_reenter</item>
+    </style>
+
+    <style name="AppThemeRomantics.Detail" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimaryRomantic</item> 
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkRomantic</item> 
+        <item name="colorControlHighlight">@color/colorAccentTranslucentRomantic</item> 
+        <item name="colorAccent">@color/colorAccentRomantic</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#FFFFFF</item>
+
+
+        <!--<item name="android:windowSharedElementEnterTransition">-->
+            <!--@transition/sharing_shared_element_enter-->
+        <!--</item>-->
+
+        <!--<item name="android:listViewStyle">@style/ListViewStyle.Light</item>-->
+
+        <item name="actionOverflowMenuStyle">@style/PopupMenuListView</item>
+
+        <item name="android:navigationBarColor">@color/colorPrimaryDarkRomantic</item>
+
+        <!--<item name="android:windowSharedElementEnterTransition">@android:transition/move</item>-->
+        <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
+        <item name="android:windowSharedElementsUseOverlay">true</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">false</item>
+        <item name="android:windowEnterTransition">@transition/detail_enter</item>
+    </style>
+
+
+</resources>

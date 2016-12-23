@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryRomantic">#E91E63</color>
+    <color name="colorPrimaryDarkRomantic">#C2185B</color>
+    <color name="colorAccentRomantic">#FFEB3B</color>
+    <color name="colorAccentTranslucentRomantic">#80FFEB3B</color>
+
+    <color name="colorPrimaryClassic">#444153</color>
+    <color name="colorPrimaryDarkClassic">#383547</color>
+    <color name="colorAccentClassic">#E91E63</color>
+    <color name="colorAccentTranslucentClassic">#80E91E63</color>
+
+    <color name="me_split_line_color">#D0D0CF</color>
+</resources>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">流行电影</string>
+
+    <string name="action_settings">设置</string>
+    <string name="action_share">分享</string>
+    <string name="settings">设置</string>
+
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="timeline">Jul 2, 1997</string>
+    <string name="review">8.1/10</string>
+
+    <!-- preferences -->
+    <string name="pref_dark_theme" tools:ignore="MissingTranslation">pref_dark_theme</string> <!-- deprecated -->
+    <string name="pref_theme" tools:ignore="MissingTranslation">pref_theme</string> <!-- key for the pref-->
+
+    <!-- key for the pref-->
+
+    <string name="pref_theme_value_romantic" tools:ignore="MissingTranslation">romantic</string>
+    <string name="pref_theme_value_classic" tools:ignore="MissingTranslation">classic</string>
+
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam efficitur ipsum in placerat molestie. Fusce quis mauris a enim sollicitudin ultrices non eget velit. Aliquam eu pulvinar enim. Praesent libero nisl, ultricies vel maximus eu, maximus et nisi. Phasellus pharetra nec ligula vitae mollis. Quisque porttitor ornare magna, quis dignissim libero aliquam id. Donec sollicitudin ultrices ante, a semper erat tristique in. Vivamus sodales in ligula at sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla tempus bibendum nibh, ac tincidunt quam convallis non. Proin dolor nunc, egestas et tortor consequat, dignissim lacinia odio. Ut ut aliquet erat.  Ut non scelerisque elit. Morbi dolor neque, iaculis eu justo rutrum, aliquet dictum mauris. Phasellus quis massa ut ligula feugiat congue a et dolor. Etiam a dui a sapien ornare accumsan ac ut lorem. Suspendisse vehicula lorem dapibus nibh rhoncus ultricies. Proin sem nulla, elementum quis pharetra quis, commodo vitae nisi. Donec urna orci, posuere et iaculis sit amet, fringilla quis sapien. Pellentesque nec posuere felis. Praesent malesuada tellus nisi, non dictum justo interdum eget. Quisque mollis euismod libero, non aliquam lorem interdum vitae. Aliquam vehicula efficitur purus eget rutrum. Sed pulvinar fermentum risus ac viverra. Cras laoreet ligula quam, ac lacinia nisl elementum in. Aenean velit arcu, euismod a venenatis non, pulvinar pulvinar massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam efficitur ipsum in placerat molestie. Fusce quis mauris a enim sollicitudin ultrices non eget velit. Aliquam eu pulvinar enim. Praesent libero nisl, ultricies vel maximus eu, maximus et nisi. Phasellus pharetra nec ligula vitae mollis. Quisque porttitor ornare magna, quis dignissim libero aliquam id. Donec sollicitudin ultrices ante, a semper erat tristique in. Vivamus sodales in ligula at sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla tempus bibendum nibh, ac tincidunt quam convallis non. Proin dolor nunc, egestas et tortor consequat, dignissim lacinia odio. Ut ut aliquet erat.  Ut non scelerisque elit. Morbi dolor neque, iaculis eu justo rutrum, aliquet dictum mauris. Phasellus quis massa ut ligula feugiat congue a et dolor. Etiam a dui a sapien ornare accumsan ac ut lorem. Suspendisse vehicula lorem dapibus nibh rhoncus ultricies. Proin sem nulla, elementum quis pharetra quis, commodo vitae nisi. Donec urna orci, posuere et iaculis sit amet, fringilla quis sapien. Pellentesque nec posuere felis. Praesent malesuada tellus nisi, non dictum justo interdum eget. Quisque mollis euismod libero, non aliquam lorem interdum vitae. Aliquam vehicula efficitur purus eget rutrum. Sed pulvinar fermentum risus ac viverra. Cras laoreet ligula quam, ac lacinia nisl elementum in. Aenean velit arcu, euismod a venenatis non, pulvinar pulvinar massa.</string>
+
+    <!-- detail view mockup -->
+    <string name="title">Jurassic Park</string>
+
+    <!-- detail view mockup -->
+    <string name="title_review">评论:</string>
+    <string name="title_trailer">预告片: </string>
+    <string name="length">影片时长</string>
+
+    <string name="pref_theme_title_dialog">主题</string>
+
+    <string name="change_theme_tip">更换主题</string>
+
+    <!-- detail activity button strings -->
+    <string name="bn_see_reviews">See Reviews</string>
+    <string name="bn_watch_trailors">Watch Trailors</string>
+
+    <!-- Theme -->
+
+    <!-- text to show for empty plot synopsis -->
+    <string name="empty_overview">暂无评论.</string>
+    <string name="empty_release_date">暂无上映日期.</string>
+    <string name="empty_title">暂无主题.</string>
+    <string name="empty_rating">暂无评级.</string>
+    <string name="empty_review">暂无评论.</string>
+    <string name="empty_trailer">暂无预告片.</string>
+
+    <string name="no_trailer_no_network_connection">请连接网络来观看预告片.</string>
+    <string name="no_review_no_network_connection">请连接网络来查看评论.</string>
+
+    <!-- action bar title -->
+    <string name="most_popular">流行电影</string>
+    <string name="highest_rated">高口碑</string>
+    <string name="favorite">我的最爱</string>
+    <string name="movie">电影</string>
+    <string name="no_comments_cocktail">暂无评论</string>
+
+    <string name="content_description_trailer_preview">Trailer Preview Image</string>
+    <string name="name_movie">Title</string>
+
+    <string name="release_date">上映日期</string>
+    <string name="average_vote">评分</string>
+    <string name="plot_synopsis">简介</string>
+
+    <string name="pref_theme_entry_romantic" tools:ignore="MissingTranslation">浪漫</string>
+    <string name="pref_theme_entry_classic" tools:ignore="MissingTranslation">经典</string>
+    <string name="about_this_app">本产品使用了TMDb提供的API但是没有经过TMDb认证。它也可以作为优达学城安卓开发者微学位课程中的‘流行电影’项目的参考项目。</string>
+    <string name="about_this_app_title">关于本应用</string>
+</resources>

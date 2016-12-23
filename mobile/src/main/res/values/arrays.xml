@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pref_theme_options">
+        <item>@string/pref_theme_entry_classic</item>
+        <item>@string/pref_theme_entry_romantic</item>
+    </string-array>
+    <string-array name="pref_theme_values">
+        <item>@string/pref_theme_value_classic</item>
+        <item>@string/pref_theme_value_romantic</item>
+    </string-array>
+    <string-array name="sort_order_entries" >
+        <item>Most Popular</item>
+        <item>Top Rated</item>
+        <item>My Favorite</item>
+    </string-array>
+</resources>
