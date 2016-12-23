@@ -79,7 +79,6 @@ public class ItemsProvider extends ContentProvider {
 		Cursor cursor = builder.where(selection, selectionArgs).query(db, projection, sortOrder);
         if (cursor != null) {
             cursor.setNotificationUri(getContext().getContentResolver(), uri);
-			//cursor.close();
         }
         return cursor;
 	}

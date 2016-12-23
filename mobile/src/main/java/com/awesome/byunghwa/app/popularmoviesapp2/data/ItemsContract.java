@@ -60,11 +60,6 @@ public class ItemsContract {
 			LogUtil.log_i("Items Contract URI", "uri: " + uri); // Items Contract URI﹕ uri: content://com.awesome.byunghwa.app.popularmoviesapp2/items/214052
 			return uri;
 		}
-
-//        /** Read item ID item detail URI. */
-//        public static long getItemId(Uri itemUri) {
-//            return Long.parseLong(itemUri.getPathSegments().get(1));
-//        }
 	}
 
 	public static final class HighestRatedEntry implements BaseColumns {
@@ -107,11 +102,6 @@ public class ItemsContract {
 			LogUtil.log_i("Items Contract URI", "uri: " + uri); // Items Contract URI﹕ uri: content://com.awesome.byunghwa.app.popularmoviesapp2/items/214052
 			return uri;
 		}
-
-//        /** Read item ID item detail URI. */
-//        public static long getItemId(Uri itemUri) {
-//            return Long.parseLong(itemUri.getPathSegments().get(1));
-//        }
 	}
 
 	/* Inner class that defines the table contents of the weather table */

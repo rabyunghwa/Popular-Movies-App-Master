@@ -46,7 +46,6 @@ import android.widget.TextView;
 import com.awesome.byunghwa.app.popularmoviesapp2.R;
 import com.awesome.byunghwa.app.popularmoviesapp2.activity.DetailActivity;
 import com.awesome.byunghwa.app.popularmoviesapp2.activity.SettingsActivity;
-import com.awesome.byunghwa.app.popularmoviesapp2.adapter.TransitionAdapter;
 import com.awesome.byunghwa.app.popularmoviesapp2.data.FavoriteMoviesLoader;
 import com.awesome.byunghwa.app.popularmoviesapp2.data.ItemsContract;
 import com.awesome.byunghwa.app.popularmoviesapp2.data.PopularMoviesLoader;
@@ -203,11 +202,31 @@ public class MovieDetailFragment extends Fragment implements LoaderManager.Loade
         if (savedInstanceState == null) {
             fab.setScaleX(0);
             fab.setScaleY(0);
-            getActivity().getWindow().getEnterTransition().addListener(new TransitionAdapter() {
+            getActivity().getWindow().getEnterTransition().addListener(new Transition.TransitionListener() {
+                @Override
+                public void onTransitionStart(Transition transition) {
+
+                }
+
                 @Override
                 public void onTransitionEnd(Transition transition) {
                     getActivity().getWindow().getEnterTransition().removeListener(this);
                     fab.animate().scaleX(1).scaleY(1);
+                }
+
+                @Override
+                public void onTransitionCancel(Transition transition) {
+
+                }
+
+                @Override
+                public void onTransitionPause(Transition transition) {
+
+                }
+
+                @Override
+                public void onTransitionResume(Transition transition) {
+
                 }
             });
         }
@@ -228,28 +247,6 @@ public class MovieDetailFragment extends Fragment implements LoaderManager.Loade
             return;
         }
 
-//        getView().setFocusableInTouchMode(true);
-//        getView().requestFocus();
-//        getView().setOnKeyListener(new View.OnKeyListener() {
-//            @Override
-//            public boolean onKey(View v, int keyCode, KeyEvent event) {
-//
-//                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
-//                    // handle back button's click listener
-//                    fab.animate().scaleX(0).scaleY(0).setListener(new AnimatorListenerAdapter() {
-//                        @Override
-//                        public void onAnimationEnd(Animator animation) {
-//                            AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
-//                            appCompatActivity.supportFinishAfterTransition();
-//
-//                            fab.hide();
-//                        }
-//                    });
-//                    return true;
-//                }
-//                return false;
-//            }
-//        });
     }
 
     @Override
@@ -591,7 +588,6 @@ public class MovieDetailFragment extends Fragment implements LoaderManager.Loade
         if (item.getItemId() == android.R.id.home) {
             //restablishActionBar();
             LogUtil.log_i(TAG, "Home Button Clicked!");
-            //AppCompatActivity activity = (AppCompatActivity) getActivity();
             if (android.os.Build.VERSION.SDK_INT >= 21) {
                 getActivity().finishAfterTransition();
             } else {

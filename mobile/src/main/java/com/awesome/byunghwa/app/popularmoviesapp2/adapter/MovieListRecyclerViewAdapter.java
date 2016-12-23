@@ -102,7 +102,6 @@ public class MovieListRecyclerViewAdapter extends RecyclerView.Adapter<MovieList
             // response. You should use something like Guava's Strings.emptyToNull if you want to allow empty
             // strings. We expect either null indicating the absence of a URL or a well-formed URI to load
             if (!urlComplete.isEmpty()) {
-//                Picasso.with(holder.image.getContext()).load(urlComplete).placeholder(mContext.getResources().getDrawable(R.drawable.movie_placeholder)).into(holder.image);
                 Picasso.with(holder.image.getContext()).load(urlComplete).placeholder(mContext.getResources().getDrawable(R.drawable.movie_placeholder)).into(holder.image, new Callback() {
                     @Override
                     public void onSuccess() {
@@ -172,7 +171,6 @@ public class MovieListRecyclerViewAdapter extends RecyclerView.Adapter<MovieList
     public void swapCursor(Cursor newCursor) {
         mCursor = newCursor;
         LogUtil.log_i(TAG, "Cursor Size: " + mCursor.getCount());
-        //notifyDataSetChanged();
     }
 
 }

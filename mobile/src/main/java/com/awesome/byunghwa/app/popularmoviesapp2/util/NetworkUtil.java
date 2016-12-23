@@ -9,8 +9,6 @@ import android.net.NetworkInfo;
  */
 public class NetworkUtil {
 
-    //public static final String ACTION_NETWORK_REESTABLISHED = "com.awesome.byunghwa.app.popularmoviesapp.ACTION_NETWORK_RECONNECTED";
-
     public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
